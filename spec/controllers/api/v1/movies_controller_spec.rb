@@ -18,22 +18,13 @@ RSpec.describe Api::V1::MoviesController, type: :controller do
     end
   end
 
-  # describe 'POST create' do
-  #   it 'creates new movie' do
-  #     expect do
-  #       post :create, params: { genre_id: genre.id, movie: { title: 'New Movie', year: '2022', rating: 1.5, expert_rating: 3.5, watched: true }.to_json }
-  #     end.to change(Movie, :count).by(1)
-  #   end
-  # end
-
   describe 'POST create' do
     it 'creates new movie' do
-        post :create, params: { genre_id: genre.id, movie: { title: 'New Movie', year: '2022', rating: 1.5, expert_rating: 3.5, watched: true }.to_json }
-        expect(response).to have_http_status(:created)
-        expect(JSON.parse(response.body).size).to eq(2)
+      expect do
+        post :create, params: { genre_id: genre.id, movie: { title: 'New Movie', year: '2022', rating: 1.5, expert_rating: 3.5, watched: true } }
+      end.to change(Movie, :count).by(1)
     end
   end
-  
 
   describe 'PATCH update' do
     it 'updates the movie' do
