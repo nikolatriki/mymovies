@@ -5,10 +5,20 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-['Comedy', 'Horror', 'Action'].each do |genre|
-  Genre.create!(title: genre)
+require 'factory_bot_rails'
+include FactoryBot::Syntax::Methods
 
-  10.times do
-    Movie.create!(title: Faker::Movie.title, genre_id: Genre.last.id)
+# ['Comedy', 'Horror', 'Action'].each do |genre|
+#   Genre.create!(title: genre)
+
+#   10.times do
+#     Movie.create!(title: Faker::Movie.title, genre_id: Genre.last.id)
+#   end
+# end
+3.times do
+  genre = create(:genre)
+
+  rand(3..7).times do
+    create(:movie, genre: genre)
   end
 end
