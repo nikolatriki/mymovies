@@ -1,6 +1,6 @@
 import './App.css';
 import axios from 'axios';
-import Movies from '/components/movies';
+import Movies from './/components/movies';
 import { useEffect, useState } from 'react';
 
 const API_URL = 'http://localhost:3000/api/v1/movies';
